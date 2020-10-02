@@ -1,3 +1,7 @@
+# Lock files
+package-lock.json
+yarn.lock
+
 # Logs
 logs
 *.log
@@ -67,3 +71,8 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+
+# SonarQube
+
+.scannerwork
