@@ -1,15 +1,21 @@
-import React, { Component } from "react"
+import React, {Component} from "react"
 import SectionTitle from "./section-title"
 
 import "../../scss/ui/_section.scss"
 
 export default class Section extends Component {
-	render() {
-		return (
-			<section className="section">
-				<SectionTitle title={this.props.title} subtitle={this.props.subtitle} link={this.props.link} />
-				{this.props.children && <div className="container">{this.props.children}</div>}
-			</section>
-		)
-	}
+  render() {
+    return (
+      <section className="section">
+        <SectionTitle
+          title={this.props.title}
+          subtitle={this.props.subtitle}
+          link={this.props.link}
+        />
+        {this.props.children && (
+          <div className="container">{this.props.children}</div>
+        )}
+      </section>
+    )
+  }
 }

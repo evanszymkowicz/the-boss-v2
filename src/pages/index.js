@@ -11,7 +11,7 @@ export default class Index extends React.Component {
   render() {
     const {data} = this.props
     const posts = data.allMarkdownRemark.edges
-
+    //  TODO: Keep an eye on this new syntax stuff
     return (
       <Layout location={this.props.location}>
         <Story />
