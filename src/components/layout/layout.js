@@ -1,6 +1,7 @@
 import React from "react"
-//  TODO: Header
+import Header from "../header"
 //  TODO: Footer
+//  TODO LT: SEO solution
 
 export default class Layout extends React.Component {
   render() {
@@ -8,13 +9,13 @@ export default class Layout extends React.Component {
 
     return (
       <>
-        // <Header title={title} root={location.pathname === `${__PATH_PREFIX__}/`} />
+        <Header
+          title={title}
+          root={location.pathname === `${__PATH_PREFIX__}/`}
+        />
         <main>
-          <div className="inner-page">
-            {children}
-          </div>
+          <div className="inner-page">{children}</div>
         </main>
-        // <Footer />
       </>
     )
   }

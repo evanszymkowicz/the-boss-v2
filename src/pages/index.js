@@ -1,5 +1,5 @@
 import React from "react"
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 
 import Story from "../components/sections/story"
 import Blog from "../components/sections/blog"
@@ -9,9 +9,8 @@ import Section from "../components/ui/section"
 
 export default class Index extends React.Component {
   render() {
-    const {data} = this.props
+    const { data } = this.props
     const posts = data.allMarkdownRemark.edges
-    //  TODO: Keep an eye on this new syntax stuff
     return (
       <Layout location={this.props.location}>
         <Story />
@@ -33,8 +32,8 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 3
-      sort: {fields: [frontmatter___date], order: DESC}
-      filter: {fields: {slug: {regex: "^/blog/"}}}
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fields: { slug: { regex: "^/blog/" } } }
     ) {
       edges {
         node {
