@@ -8,6 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@pittica/gatsby-plugin-blog": "^1.1.4",
+    "@pittica/scss-functions": "^1.1.0",
     "axios": "^0.20.0",
     "babel-plugin-styled-components": "^1.11.1",
     "classnames": "^2.2.6",
