@@ -3,7 +3,6 @@ import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Sign from "./ui/sign"
 import classNames from "classnames"
-
 import "../scss/ui/_navbar.scss"
 
 export default class Header extends Component {

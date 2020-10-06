@@ -1,80 +1,112 @@
-import React from "react"
+import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-
-//  TODO: Validate this page with the "article" ui components
-//  TODO: Decide on whether or not go with a blog format or with something less dynamic
-//  TODO: templates/page/legal
+import PostLayout from "../components/layout/post-layout"
+import TagLink from "../components/ui/link/tag-link"
+import CategoryLink from "../components/ui/link/category-link"
+import ArticleHeader from "../components/ui/article/article-header"
+import "../scss/ui/_post.scss"
 //  TODO: Images
 //  TODO: Footer
-const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = pageContext
+export default class BlogPostTemplate extends Component {
+  render() {
+    const post = this.props.data.markdownRemark
+    const { previous, next } = this.props.pageContext
+    const image = post.frontmatter.featuredImage
+      ? post.frontmatter.featuredImage.childImageSharp.sizes.src
+      : null
 
-  return (
-    <Layout location={location} title={siteTitle}>
-      <SEO
+    let categories
+    let tags
+
+    if (post.frontmatter.categories instanceof Array) {
+      categories = post.frontmatter.categories
+    } else {
+      categories = [post.frontmatter.categories]
+    }
+
+    if (post.frontmatter.tags instanceof Array) {
+      tags = post.frontmatter.tags
+    } else {
+      tags = [post.frontmatter.tags]
+    }
+
+    return (
+      <PostLayout
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
+        image={image}
+        post={post}
+        location={this.props.location}
       >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
-    </Layout>
-  )
+        <article className="blog-post">
+          <ArticleHeader image={image}>
+            <section className="hero">
+              <div className="hero-body">
+                <div className="container">
+                  <h1 className="title">{post.frontmatter.title}</h1>
+                  <h2 className="subtitle">
+                    <i className="icon-pittica-clock"></i>{" "}
+                    {post.frontmatter.date}
+                  </h2>
+                  {categories.map((category, index) => (
+                    <h2
+                      className="subtitle"
+                      title="Categoria"
+                      key={"category" + index}
+                    >
+                      <CategoryLink category={category} />
+                    </h2>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </ArticleHeader>
+          {tags.length > 0 && (
+            <div className="container">
+              {tags.map((tag, index) => (
+                <TagLink tag={tag} key={"tag" + index} />
+              ))}
+            </div>
+          )}
+          <div className="container">
+            <section
+              className="post-content"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+          </div>
+        </article>
+        {(previous || next) && (
+          <nav className="bottom-nav post-nav">
+            <ul>
+              <li>
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    <i className="icon-pittica-arrow-left"></i>{" "}
+                    {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title}{" "}
+                    <i className="icon-pittica-arrow-right"></i>
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </nav>
+        )}
+      </PostLayout>
+    )
+  }
 }
-
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
         title
+        author
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -83,8 +115,17 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MM/DD/YYYY")
         description
+        categories
+        tags
+        featuredImage {
+          childImageSharp {
+            sizes(maxWidth: 1280) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
     }
   }

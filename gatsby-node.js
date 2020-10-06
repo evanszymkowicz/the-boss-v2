@@ -1,15 +1,15 @@
 const path = require(`path`)
 
-exports.createPages = async ({graphql, actions}) => {
-  const {createPage} = actions
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
   const postsPerPage = 15
   const remarks = await graphql(
     `
       {
         allMarkdownRemark(
-          sort: {fields: [frontmatter___date], order: DESC}
+          sort: { fields: [frontmatter___date], order: DESC }
           limit: 2000
-          filter: {fields: {slug: {regex: "/^/(?!blog).+//s"}}}
+          filter: { fields: { slug: { regex: "/^/(?!blog).+//s" } } }
         ) {
           edges {
             node {
@@ -32,7 +32,7 @@ exports.createPages = async ({graphql, actions}) => {
 
   const pages = []
 
-  remarks.data.allMarkdownRemark.edges.forEach(edge => {
+  remarks.data.allMarkdownRemark.edges.forEach((edge) => {
     let match = edge.node.fields.slug.match(/^\/([\w-]+)\/(?:)/i)
 
     if (match !== null && match.length > 1) {
@@ -46,11 +46,11 @@ exports.createPages = async ({graphql, actions}) => {
     }
   })
 
-  Object.keys(pages).forEach(slug => {
+  Object.keys(pages).forEach((slug) => {
     let contents = pages[slug]
     let total = Math.ceil(contents.length / postsPerPage)
 
-    Array.from({length: total}).forEach((_, i) => {
+    Array.from({ length: total }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/${slug}` : `/${slug}/${i + 1}`,
         component: path.resolve(`./src/templates/page/${slug}-list.jsx`),
@@ -65,7 +65,7 @@ exports.createPages = async ({graphql, actions}) => {
       })
     })
 
-    contents.forEach(page => {
+    contents.forEach((page) => {
       createPage({
         path: page.node.fields.slug,
         component: path.resolve(`./src/templates/page/${slug}-post.jsx`),
@@ -77,11 +77,11 @@ exports.createPages = async ({graphql, actions}) => {
   })
 }
 
-exports.onCreateWebpackConfig = ({stage, actions, getConfig}) => {
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   if (stage === "build-javascript") {
     const config = getConfig()
     const miniCssExtractPlugin = config.plugins.find(
-      plugin => plugin.constructor.name === "MiniCssExtractPlugin"
+      (plugin) => plugin.constructor.name === "MiniCssExtractPlugin"
     )
 
     if (miniCssExtractPlugin) {
