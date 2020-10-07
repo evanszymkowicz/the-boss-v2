@@ -1,5 +1,4 @@
 import React from "react"
-//  TODO: Come back to this when assets are ready
 export default (props) => {
   return (
     <svg

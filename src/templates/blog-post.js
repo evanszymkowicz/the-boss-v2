@@ -5,8 +5,7 @@ import TagLink from "../components/ui/link/tag-link"
 import CategoryLink from "../components/ui/link/category-link"
 import ArticleHeader from "../components/ui/article/article-header"
 import "../scss/ui/_post.scss"
-//  TODO: Images
-//  TODO: Footer
+
 export default class BlogPostTemplate extends Component {
   render() {
     const post = this.props.data.markdownRemark

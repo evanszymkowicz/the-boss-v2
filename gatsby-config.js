@@ -134,7 +134,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#cc151a`,
         display: `minimal-ui`,
-        icon: `content/assets/icon.png`,
+        icon: `content/assets/maybach.jpg`,
       },
     },
     {
@@ -189,27 +189,6 @@ module.exports = {
         templateArticle: "./src/templates/blog-post.js",
         templateList: "./src/templates/blog-list.js",
         slug: "blog",
-      },
-    },
-    {
-      resolve: `@pittica/gatsby-plugin-seo`,
-      options: {
-        image: `/share.jpg`,
-        socials: {
-          twitter: {
-            username: "",
-          },
-          github: {
-            username: ``,
-          },
-          facebook: {
-            page: ``,
-            app: ``,
-          },
-          linkedin: {
-            page: ``,
-          },
-        },
       },
     },
   ],

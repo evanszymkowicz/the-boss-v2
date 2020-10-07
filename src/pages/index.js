@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import Story from "../components/sections/story"
 import Blog from "../components/sections/blog"
 import Featuring from "../components/sections/featuring"

@@ -4,15 +4,20 @@ import Layout from "../components/layout/layout"
 import Section from "../components/ui/section"
 import Featuring from "../components/sections/featuring"
 
-import story from "../../static/assets/introducing-rick-ross.jpeg"
-//  TODO: Complete the render method
-
 class StoryPage extends React.Component {
   render() {
     return (
       <Layout location={this.props.location} title="Story">
-        <figure className="image is max-width">
+        {/* <figure className="image is max-width">
           <img src={story} alt="Introducing Rick Ross" />
+        </figure> */}
+        <figure className="image is max-width">
+          <img
+            src={"https://i.imgur.com/fVMWPHp.jpg"}
+            alt="About"
+            width="1080"
+            height="1080"
+          />
         </figure>
         <Section title="About" subtitle="2006: Port of Miami">
           <h2>2006: Port of Miami</h2>
@@ -30,14 +35,22 @@ class StoryPage extends React.Component {
             Recording Industry Association of America on November 8, 2006.
           </p>
         </Section>
-        <figure className="image is max-width">
-          <img src={2006} alt="About" width="1080" height="1080" />
-        </figure>
         <Section title="Featuring" subtitle="Associated Acts">
           <Featuring />
+        </Section>
       </Layout>
     )
   }
 }
 
 export default StoryPage
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
