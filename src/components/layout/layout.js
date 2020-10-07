@@ -1,14 +1,14 @@
 import React from "react"
 import Header from "../header"
-//  TODO: Footer
-//  TODO LT: SEO solution
+// import Footer from "../footer"
+import { SEO } from "@pittica/gatsby-plugin-seo"
 
 export default class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
-
     return (
       <>
+        <SEO title={title} path={location.pathname} />
         <Header
           title={title}
           root={location.pathname === `${__PATH_PREFIX__}/`}
@@ -16,6 +16,7 @@ export default class Layout extends React.Component {
         <main>
           <div className="inner-page">{children}</div>
         </main>
+        {/* <Footer /> */}
       </>
     )
   }
