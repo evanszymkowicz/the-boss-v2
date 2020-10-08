@@ -1,7 +1,6 @@
 import React from "react"
 import Header from "../header"
 import { SEO } from "@pittica/gatsby-plugin-seo"
-//  TODO: Footer
 export default class PostLayout extends React.Component {
   render() {
     const { location, title, children, post, image } = this.props

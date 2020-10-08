@@ -1,15 +1,31 @@
 module.exports = {
   siteMetadata: {
-    title: `The Boss`,
-    author: `Evan Szymkowicz`,
-    description: `Rick Ross Fan Site`,
+    title: `Pittica`,
+    author: `Pittica S.r.l.s.`,
+    description: `Mad Scientists At Work.`,
     locale: {
-      language: `es`,
+      language: `it`,
+      culture: `IT`,
     },
+    siteUrl: `https://pittica.com/`,
     legal: {
       privacy: "/legal/privacy",
       terms: "/legal/tos",
       cookies: "/legal/cookies",
+    },
+    organization: {
+      company: `Pittica S.r.l.s.`,
+      address: `Via Garigliano, 4`,
+      url: `https://pittica.com/`,
+      logo: `https://pittica.com/logo.png`,
+      zipCode: `48121`,
+      city: `Ravenna`,
+      province: `RA`,
+      country: `Italia`,
+      email: `info@pittica.com`,
+      taxId: `02650890391`,
+      vatId: `02650890391`,
+      registryId: `RA 220518`,
     },
     appearance: {
       accent: `#cc151a`,
@@ -57,12 +73,19 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-156974102-1`,
+        anonymize: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-htaccess`,
       options: {
         https: true,
         www: true,
         SymLinksIfOwnerMatch: true,
-        // host: "pittica.com",
+        host: "pittica.com",
         ErrorDocument: `
           ErrorDocument 401 /error/401/index.html
           ErrorDocument 403 /error/403/index.html
@@ -71,6 +94,28 @@ module.exports = {
         `,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-iubenda-cookie-footer`,
+    //   options: {
+    //     iubendaOptions: {
+    //       lang: "it",
+    //       siteId: 1781270,
+    //       countryDetection: true,
+    //       consentOnContinuedBrowsing: false,
+    //       cookiePolicyInOtherWindow: true,
+    //       cookiePolicyId: 29008249,
+    //       cookiePolicyUrl: "https://pittica.com/legal/cookies",
+    //       banner: {
+    //         position: "float-top-center",
+    //         textColor: "#fff",
+    //         backgroundColor: "#1d1d1d",
+    //         acceptButtonDisplay: true,
+    //         acceptButtonColor: "#cc151a",
+    //         acceptButtonCaptionColor: "#fff",
+    //       },
+    //     },
+    //   },
+    // },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-feed`,
@@ -120,7 +165,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Rick Ross's RSS Feed",
+            title: "Pittica's RSS Feed",
           },
         ],
       },
@@ -128,13 +173,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `The Boss`,
-        short_name: `TheBoss`,
+        name: `Pittica`,
+        short_name: `Pittica`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#cc151a`,
         display: `minimal-ui`,
-        icon: `content/assets/maybach.jpg`,
+        icon: `content/assets/icon.png`,
       },
     },
     {
@@ -180,6 +225,14 @@ module.exports = {
         ],
       },
     },
+    // {
+    //   resolve: `@pittica/gatsby-plugin-trustpilot-widget`,
+    //   options: {
+    //     username: "pittica.com",
+    //     template: "5419b6a8b0d04a076446a9ad",
+    //     business: "5eaf034c658436000194e69b",
+    //   },
+    // },
     {
       resolve: `@pittica/gatsby-plugin-blog`,
       options: {
@@ -189,6 +242,27 @@ module.exports = {
         templateArticle: "./src/templates/blog-post.js",
         templateList: "./src/templates/blog-list.js",
         slug: "blog",
+      },
+    },
+    {
+      resolve: `@pittica/gatsby-plugin-seo`,
+      options: {
+        image: `/share.jpg`,
+        socials: {
+          twitter: {
+            username: "PitticaDigital",
+          },
+          github: {
+            username: `pittica`,
+          },
+          facebook: {
+            page: `PitticaDigital`,
+            app: `600384224115787`,
+          },
+          linkedin: {
+            page: `pittica`,
+          },
+        },
       },
     },
   ],

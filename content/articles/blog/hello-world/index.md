@@ -1,6 +1,6 @@
 ---
 title: What's New From the Boss
-date: "2020-01-01T22:12:03.284Z"
+date: "10-08-2020"
 description: "News from Rick Ross"
 featuredImage: "./live-southafrica.jpg"
 categories: "News"

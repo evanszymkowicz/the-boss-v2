@@ -4,10 +4,10 @@ export default class PrivacyLink extends Component {
     return (
       <a
         href="https://www.iubenda.com/privacy-policy/29008249"
-        title="Politica sulla Privacy"
+        title="Privacy Policy"
         target="_system"
       >
-        {this.props.children || "Politica sulla Privacy"}
+        {this.props.children || "Privacy Policy"}
       </a>
     )
   }
