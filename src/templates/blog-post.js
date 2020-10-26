@@ -1,18 +1,18 @@
 import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
+
 import PostLayout from "../components/layout/post-layout"
 import TagLink from "../components/ui/link/tag-link"
 import CategoryLink from "../components/ui/link/category-link"
 import ArticleHeader from "../components/ui/article/article-header"
+
 import "../scss/ui/_post.scss"
 
 export default class BlogPostTemplate extends Component {
   render() {
     const post = this.props.data.markdownRemark
     const { previous, next } = this.props.pageContext
-    const image = post.frontmatter.featuredImage
-      ? post.frontmatter.featuredImage.childImageSharp.sizes.src
-      : null
+    const image = post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp.sizes.src : null
 
     let categories
     let tags
@@ -41,17 +41,14 @@ export default class BlogPostTemplate extends Component {
             <section className="hero">
               <div className="hero-body">
                 <div className="container">
-                  <h1 className="title">{post.frontmatter.title}</h1>
+                  <h1 className="title">
+                    {post.frontmatter.title}
+                  </h1>
                   <h2 className="subtitle">
-                    <i className="icon-pittica-clock"></i>{" "}
-                    {post.frontmatter.date}
+                    <i className="icon-pittica-clock"></i> {post.frontmatter.date}
                   </h2>
                   {categories.map((category, index) => (
-                    <h2
-                      className="subtitle"
-                      title="Categoria"
-                      key={"category" + index}
-                    >
+                    <h2 className="subtitle" title="Categories" key={"category" + index}>
                       <CategoryLink category={category} />
                     </h2>
                   ))}
@@ -67,10 +64,7 @@ export default class BlogPostTemplate extends Component {
             </div>
           )}
           <div className="container">
-            <section
-              className="post-content"
-              dangerouslySetInnerHTML={{ __html: post.html }}
-            />
+            <section className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
         </article>
         {(previous || next) && (
@@ -79,16 +73,14 @@ export default class BlogPostTemplate extends Component {
               <li>
                 {previous && (
                   <Link to={previous.fields.slug} rel="prev">
-                    <i className="icon-pittica-arrow-left"></i>{" "}
-                    {previous.frontmatter.title}
+                    <i className="icon-pittica-arrow-left"></i> {previous.frontmatter.title}
                   </Link>
                 )}
               </li>
               <li>
                 {next && (
                   <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title}{" "}
-                    <i className="icon-pittica-arrow-right"></i>
+                    {next.frontmatter.title} <i className="icon-pittica-arrow-right"></i>
                   </Link>
                 )}
               </li>

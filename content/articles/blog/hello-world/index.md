@@ -1,16 +1,18 @@
 ---
-title: What's New From the Boss
-date: "10-08-2020"
-description: "News from Rick Ross"
+title: New Music
+date: "2020-01-01T22:12:03.284Z"
+description: "New in 2020"
 featuredImage: "./live-southafrica.jpg"
-categories: "News"
-tags: ["Rick Ross", "The Boss"]
+categories: "Releases"
+tags: ["Rick Ross", "Anderson .Paak"]
 ---
 
-## Latest Single
+## (August 14 2020) CUT EM IN 
 
-Anderson .Paak Ft Rick Ross
 
-## Other Music New in 2020
+[![Hear it now](https://img.youtube.com/vi/B7pTcCvBibo/default.jpg](https://www.youtube.com/watch?v=B7pTcCvBibo&ab_channel=AndersonPaak)
 
-Rick Ross Pinned to the Cross Ft Finn Matthews
+
+## Season Ticket Holder
+
+[![Hear it now](https://img.youtube.com/vi/74y3GMYvZV4/default.jpg](https://www.youtube.com/watch?v=74y3GMYvZV4&ab_channel=RickRossVEVO)

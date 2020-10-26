@@ -9,7 +9,13 @@ exports.createPages = async ({ graphql, actions }) => {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 2000
-          filter: { fields: { slug: { regex: "/^/(?!blog).+//s" } } }
+          filter: {
+            fields: {
+              slug: {
+                regex: "/^\/(?!blog).+\//s"
+              }
+            }
+          }
         ) {
           edges {
             node {
@@ -46,32 +52,32 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   })
 
-  Object.keys(pages).forEach((slug) => {
+  Object.keys(pages).forEach(slug => {
     let contents = pages[slug]
     let total = Math.ceil(contents.length / postsPerPage)
 
     Array.from({ length: total }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/${slug}` : `/${slug}/${i + 1}`,
-        component: path.resolve(`./src/templates/page/${slug}-list.js`),
+        component: path.resolve(`./src/templates/page/${slug}-list.jsx`),
         context: {
           limit: postsPerPage,
           skip: i * postsPerPage,
           pages: total,
           current: i + 1,
           slug: slug,
-          regex: "^/(" + slug + ")/",
-        },
+          regex: "^/(" + slug + ")/"
+        }
       })
     })
 
-    contents.forEach((page) => {
+    contents.forEach(page => {
       createPage({
         path: page.node.fields.slug,
-        component: path.resolve(`./src/templates/page/${slug}-post.js`),
+        component: path.resolve(`./src/templates/page/${slug}-post.jsx`),
         context: {
-          slug: page.node.fields.slug,
-        },
+          slug: page.node.fields.slug
+        }
       })
     })
   })
@@ -81,7 +87,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   if (stage === "build-javascript") {
     const config = getConfig()
     const miniCssExtractPlugin = config.plugins.find(
-      (plugin) => plugin.constructor.name === "MiniCssExtractPlugin"
+      plugin => plugin.constructor.name === "MiniCssExtractPlugin"
     )
 
     if (miniCssExtractPlugin) {

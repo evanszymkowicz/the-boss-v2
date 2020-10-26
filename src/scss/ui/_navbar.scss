@@ -81,38 +81,39 @@
     position: absolute;
     top: 8px;
     z-index: 3;
-    @include rotate(-3);
-    @media screen and (max-width: $tablet - 1px) {
-      top: 14px;
-    }
-    svg {
+      @include rotate(-3);
+      @media screen and (max-width: $tablet - 1px) {
+        top: 14px;
+      }
+     svg {
       width: 100%;
       height: auto;
       @media screen and (max-width: $tablet - 1px) {
-        max-width: 125px;
-      }
-      &.sign-pittica {
-        .sign-pittica-logo {
-          @include svg-outline($primary-invert, 1132, 2.5s);
-        }
-        .sign-pittica-icon {
-          @include svg-outline($primary-invert, 350, 1.5s);
-        }
-      }
+         max-width: 125px;
     }
-    &:hover,
-    &:focus {
-      .sign-pittica {
-        .sign-icon-1 {
-          @include animate(translate-sign-1, 0.5s, 0s, linear);
-        }
-        .sign-icon-2 {
-          @include animate(translate-sign-2, 0.5s, 0s, linear);
-        }
-        .sign-icon-3 {
-          @include animate(translate-sign-3, 0.5s, 0s, linear);
-        }
-      }
-    }
+  }
+    //   &.sign-pittica {
+    //     .sign-pittica-logo {
+    //       @include svg-outline($primary-invert, 1132, 2.5s);
+    //     }
+    //     .sign-pittica-icon {
+    //       @include svg-outline($primary-invert, 350, 1.5s);
+    //     }
+    //   }
+    // }
+    // &:hover,
+    // &:focus {
+    //   .sign-pittica {
+    //     .sign-icon-1 {
+    //       @include animate(translate-sign-1, 0.5s, 0s, linear);
+    //     }
+    //     .sign-icon-2 {
+    //       @include animate(translate-sign-2, 0.5s, 0s, linear);
+    //     }
+    //     .sign-icon-3 {
+    //       @include animate(translate-sign-3, 0.5s, 0s, linear);
+    //     }
+    //   }
+    // }
   }
 }

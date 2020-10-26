@@ -1,6 +1,8 @@
 @import "../functions";
+
 @include font(pittica);
 @include icon-family(pittica);
+
 @include icon(pittica, sign, "\e900");
 @include icon(pittica, logo-sign, "\e901");
 @include icon(pittica, logo, "\e917");

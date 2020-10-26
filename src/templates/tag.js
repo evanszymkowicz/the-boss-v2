@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Paginator } from "@pittica/gatsby-plugin-blog"
 import Layout from "../components/layout/layout"
 import EmptyLayout from "../components/layout/empty-layout"
 import Section from "../components/ui/section"
 import Article from "../components/ui/article/article-grid"
-import { Paginator } from "@pittica/gatsby-plugin-blog"
 
 const TagTemplate = ({ location, pageContext, data }) => {
   const { name } = pageContext
@@ -29,7 +29,7 @@ const TagTemplate = ({ location, pageContext, data }) => {
   } else {
     return (
       <EmptyLayout location={location} title="Tag" value={name}>
-        Sorry, there is nothing here. Please check back soon.
+        There is nothing here.
       </EmptyLayout>
     )
   }
@@ -60,7 +60,7 @@ export const pageQuery = graphql`
             date(formatString: "DD/MM/YYYY")
             description
             featuredImage {
-              childImageSharp {
+              childImageSharp{
                 sizes(maxWidth: 1280) {
                   ...GatsbyImageSharpSizes
                 }

@@ -1,18 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
+
 import { Paginator } from "@pittica/gatsby-plugin-blog"
+
 import Layout from "../components/layout/layout"
 import EmptyLayout from "../components/layout/empty-layout"
-import Article from "../components/ui/article/article-grid"
 import Section from "../components/ui/section"
+import Article from "../components/ui/article/article-grid"
 
 const CategoryTemplate = ({ location, pageContext, data }) => {
   const { name } = pageContext
 
   if (data.allMarkdownRemark.edges.length > 0) {
     return (
-      <Layout location={location} title={`Category "${name}"`}>
-        <Section title="Category" subtitle={name}>
+      <Layout location={location} title={`Categories "${name}"`}>
+        <Section title="Categories" subtitle={name}>
           <div className="columns is-multiline">
             {data.allMarkdownRemark.edges.map(({ node }) => {
               return (
@@ -28,8 +30,8 @@ const CategoryTemplate = ({ location, pageContext, data }) => {
     )
   } else {
     return (
-      <EmptyLayout location={location} title="Category" value={name}>
-        Sorry, there is nothing here. Please check back soon.
+      <EmptyLayout location={location} title="Categories" value={name}>
+        There is nothing here.
       </EmptyLayout>
     )
   }
@@ -60,7 +62,7 @@ export const pageQuery = graphql`
             date(formatString: "DD/MM/YYYY")
             description
             featuredImage {
-              childImageSharp {
+              childImageSharp{
                 sizes(maxWidth: 1280) {
                   ...GatsbyImageSharpSizes
                 }
